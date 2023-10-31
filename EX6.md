@@ -18,7 +18,7 @@ To create a cursor using PL/SQL.
 
 ### Create employee table
 ```
-create table EMPLOYEE3 (empid NUMBER, name CHAR(40), dept CHAR(30),salary NUMBER);
+create table EMPLOYEE (empid NUMBER, name CHAR(40), dept CHAR(30),salary NUMBER);
 
 ```
 
