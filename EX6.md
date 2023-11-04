@@ -18,7 +18,24 @@ To create a cursor using PL/SQL.
 
 ### Create employee table
 ```
-create table EMPLOYEE (empid NUMBER, name CHAR(40), dept CHAR(30),salary NUMBER);
+
+CREATE TABLE employd (
+
+  empid NUMBER,
+
+  empname VARCHAR(10),
+
+  dept VARCHAR(10),
+
+  salary NUMBER
+
+);
+
+select * from employd;
+
+INSERT INTO employd VALUES (1, 'John Doe', 'Sales', 100000);
+
+INSERT INTO employd VALUES (2, 'Jane Doe', 'Marketing', 120000);
 
 ```
 
@@ -26,29 +43,55 @@ create table EMPLOYEE (empid NUMBER, name CHAR(40), dept CHAR(30),salary NUMBER)
 ```
 
 SET SERVEROUTPUT ON;
+
 DECLARE
-CURSOR employee_cursor IS
-SELECT * FROM employee;
-empid NUMBER;
-name CHAR(40);
-dept CHAR(30);
-salary NUMBER;
+
+   CURSOR employd_cursor IS
+
+   SELECT empid,empname,dept,salary
+
+   FROM employd;
+
+   emp_id NUMBER;
+
+   emp_name VARCHAR(50);
+
+   emp_dept VARCHAR(50);
+
+   emp_salary NUMBER;
+
 BEGIN
-OPEN employee_cursor;
-LOOP
-FETCH employee_cursor INTO empid, name, dept, salary;
-EXIT WHEN employee_cursor%NOTFOUND;
- 
-DBMS_OUTPUT.PUT_LINE('Employee ID: ' || empid);
-DBMS_OUTPUT.PUT_LINE('Employee Name: ' || name);
-DBMS_OUTPUT.PUT_LINE('Department: ' || dept);
-DBMS_OUTPUT.PUT_LINE('Salary: ' || salary);
-DBMS_OUTPUT.PUT_LINE('--------------------------');
-END LOOP;
-CLOSE employee_cursor;
+
+  OPEN employd_cursor;
+
+  LOOP
+    FETCH employd_cursor INTO emp_id, emp_name, emp_dept, emp_salary;
+
+    EXIT WHEN employd_cursor%NOTFOUND;
+
+    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_id);
+
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_name);
+
+    DBMS_OUTPUT.PUT_LINE('Department: ' || emp_dept);
+
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || emp_salary);
+
+  END LOOP;
+
+  CLOSE employd_cursor;
+
 END;
+
 /
+
+```
 
 ### Output:
 
+![dbms 6](https://github.com/dhivyapriyar/Ex-no-6-Creating-Cursors-using-PL-SQL/assets/119477552/4b138194-5442-4605-b947-f7b6d2a84d4e)
+
+
 ### Result:
+
+Thus the program has been implemented successfully.
